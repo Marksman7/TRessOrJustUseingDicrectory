@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace LearningTressAtTheMoement
+{
+    class ContainemtnNode
+    {
+        int numbering;
+        Dictionary<int, ContainemtnNode> Done;
+        
+        public ContainemtnNode add(int Value)
+        {
+            if (this.Done == null)
+            {
+                this.Done = new Dictionary<int, ContainemtnNode>();
+            }
+            ContainemtnNode result;
+            if (this.Done.TryGetValue(Value, out result))
+            {
+                return result;
+            }
+
+            result = new ContainemtnNode();
+            this.Done[Value] = result;
+            return result;
+        }
+
+        public ContainemtnNode Get(int Value)
+        {
+            if (this.Done == null)
+            {
+                return null;
+            }
+
+            ContainemtnNode result;
+
+            if (this.Done.TryGetValue(Value, out result))
+            {
+                return result;
+            }
+            return null;
+
+        }
+
+        public void Setnums(int numer)
+        {
+            this.numbering = numer;
+        }
+
+        public int GetNums()
+        {
+            return this.numbering;
+        }
+
+
+
+
+
+    }
+}
