@@ -1,0 +1,97 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+
+namespace LearningTressAtTheMoement
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            TreeThisUp Tree = new TreeThisUp();
+
+            int NumberChosed = 74;
+
+            string FileGitting = @"D:\Fall2021\Algorithms\LearningTressAtTheMoement\scores.txt";
+
+            List<string> lineAtion = File.ReadAllLines(FileGitting).ToList();
+
+            int Tracker = 0;
+
+            foreach (string line in lineAtion)
+            {
+                //Console.WriteLine(line + "  :" + Tracker);
+                Tracker = Tracker + 1;
+
+            }
+
+            int[] NumberOrig = new int[Tracker];
+
+            int[] CorrectNumber = new int[Tracker];
+
+            int Count = 0;
+
+            int Keep = 0;
+
+            int Keeps = 0;
+
+            foreach (string line in lineAtion)
+            {
+                NumberOrig[Count] = Int32.Parse(line);
+                CorrectNumber[Count] = 111;
+                Count = Count + 1;
+            }
+
+            //for (int i = 0; i < Tracker; i++)
+            //{
+            //    Console.WriteLine(NumberOrig[i] + "  :" + i);
+            //}
+
+            for (int a = 0; a < Tracker; a++)
+            {
+                Keep = 0;
+                for (int s = 0; s < Tracker; s++)
+                {
+                    if (s == 111 && Keep == 0)
+                    {
+                        CorrectNumber[s] = NumberOrig[a];
+                    }
+                    if (s == 111 && Keep != 0)
+                    {
+                        CorrectNumber[s] = Keep;
+                    }
+                    else if (NumberOrig[a] < CorrectNumber[s] && Keep == 0)
+                    {
+                        Keep = CorrectNumber[s];
+                        CorrectNumber[s] = NumberOrig[a];
+                    }
+                    else if (Keep < CorrectNumber[s] && Keep != 0)
+                    {
+                        Keeps = CorrectNumber[s];
+                        CorrectNumber[s] = Keep;
+                        Keep = Keeps;
+                        Keeps = 0;
+                    }
+                }
+            }
+
+            for (int p = 0; p < Tracker; p++)
+            {
+                Tree.addnumbers(CorrectNumber[p]);
+            }
+
+
+            Console.WriteLine("Tyep a numbe other waise defult is 74 i think..? (Type a number please other wise it does not work)");
+
+
+
+            NumberChosed = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Does this work, "  + Tree.ContainNums(NumberChosed));
+
+        }
+    }
+}
