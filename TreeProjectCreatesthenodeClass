@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace LearningTressAtTheMoement
+{
+    class TreeThisUp
+    {
+        ContainemtnNode Stem = new ContainemtnNode();
+
+        public void addnumbers(int Valueing)
+        {
+            ContainemtnNode Current = this.Stem;
+            for (int i = 0; i < Valueing; i++)
+            {
+                Current =Current.add(Valueing);
+            }
+            Current.Setnums(Valueing);
+        }
+
+        public bool ContainNums(int valuez)
+        {
+            ContainemtnNode Currentl = this.Stem;
+
+            for (int i = 0; i < valuez; i++)
+            {
+                Currentl = Currentl.Get(valuez);
+                if(Currentl == null)
+                {
+                    return false;
+                }
+            }
+            return Currentl != null && Currentl.GetNums() != null;
+        }
+        
+    }
+}
